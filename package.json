@@ -1,5 +1,5 @@
 {
-    "version": "0.0.0",
-    "hash": "",
-    "postBuild": "Utilities/post_build.rb"
+  "version": "0.0.1",
+  "hash": "171db1cc3c4893eb6452090d890aa9e712a208d149fe2748295e8dbe13230825",
+  "postBuild": "Utilities/post_build.rb"
 }
