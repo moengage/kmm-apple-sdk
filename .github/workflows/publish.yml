@@ -1,0 +1,32 @@
+name: Publish pods to CocoaPods
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Create release
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout release repository
+      uses: actions/checkout@v4
+      with:
+        ref: master
+
+    - name: Checkout sdk automation scripts
+      uses: actions/checkout@v3
+      with:
+        repository: moengage/sdk-automation-scripts
+        path: sdk-automation-scripts
+        token: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
+
+    - name: Setup iOS
+      uses: ./sdk-automation-scripts/actions/ios-action-setup
+      env:
+        SDK_BOT_ACCESS_TOKEN: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
+
+    - name: Publish pods
+      run: ./Utilities/pod_publish.rb
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}

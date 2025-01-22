@@ -24,11 +24,11 @@ Pod::Spec.new do |s|
 
     s.source       = {
       :http => "https://github.com/moengage/kmm-apple-sdk/releases/download/#{s.version}/#{s.name}.xcframework.zip",
-      :sha256 => package[:hash]
+      :sha256 => config[:hash]
     }
 
-    s.ios.deployment_target = '11.0'
-    s.tvos.deployment_target = '11.0'
+    s.ios.deployment_target = '12.0'
+    s.tvos.deployment_target = '12.0'
     s.swift_versions = '5.0'
     s.requires_arc = true
     s.vendored_frameworks = "#{s.name}.xcframework"
