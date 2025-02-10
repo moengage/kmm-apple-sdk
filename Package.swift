@@ -6,7 +6,7 @@ import PackageDescription
 
 let package = Package(
     name: "kmm-apple-sdk",
-    platforms: [.iOS(.v12), .tvOS(.v12)],
+    platforms: [.iOS(.v11), .tvOS(.v11)],
     products: [], dependencies: [], targets: [],
     swiftLanguageVersions: [.v5]
 )
@@ -20,7 +20,7 @@ let products: [MoEngagePackageProduct] = [
     .init(
         name: "MoEngageKMMConditionEvaluator",
         targets: [
-            .binaryTarget(name: "MoEngageKMMConditionEvaluator", url: "https://github.com/moengage/kmm-apple-sdk/releases/download/0.0.1/MoEngageKMMConditionEvaluator.xcframework.zip", checksum: "171db1cc3c4893eb6452090d890aa9e712a208d149fe2748295e8dbe13230825"),
+            .binaryTarget(name: "MoEngageKMMConditionEvaluator", url: "https://github.com/moengage/kmm-apple-sdk/releases/download/1.0.0/MoEngageKMMConditionEvaluator.xcframework.zip", checksum: "16fb97f6c5973c6daed338307e717427aad470ea9e913252b3de5f9a1e209485"),
         ]
     ),
 ]
