@@ -24,12 +24,11 @@ jobs:
 
     - name: Setup iOS
       uses: ./sdk-automation-scripts/actions/ios-action-setup
-      working-directory: ./source
       env:
         SDK_BOT_ACCESS_TOKEN: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
 
     - name: Publish pods
       run: ${{ github.workspace }}/sdk-automation-scripts/scripts/release/ios/pod_push.rb
-      working-directory: ./source
+      working-directory: source
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
