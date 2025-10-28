@@ -1,5 +1,13 @@
 {
-  "version": "1.0.0",
-  "hash": "16fb97f6c5973c6daed338307e717427aad470ea9e913252b3de5f9a1e209485",
-  "postBuild": "Utilities/post_build.rb"
+  "name": "MoEngageKMM",
+  "postBuild": "Utilities/post_build.rb",
+  "packages": [
+    {
+      "name": "MoEngageKMMConditionEvaluator",
+      "version": "1.0.0",
+      "hash": "16fb97f6c5973c6daed338307e717427aad470ea9e913252b3de5f9a1e209485",
+      "changelog": "CHANGELOG.md",
+      "tagPrefix": "kmmce-"
+    }
+  ]
 }
