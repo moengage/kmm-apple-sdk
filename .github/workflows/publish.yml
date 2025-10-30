@@ -13,9 +13,10 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: master
+        path: source
 
     - name: Checkout sdk automation scripts
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: moengage/sdk-automation-scripts
         path: sdk-automation-scripts
@@ -27,6 +28,7 @@ jobs:
         SDK_BOT_ACCESS_TOKEN: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
 
     - name: Publish pods
-      run: ./Utilities/pod_publish.rb
+      run: ${{ github.workspace }}/sdk-automation-scripts/scripts/release/ios/pod_push.rb
+      working-directory: source
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
