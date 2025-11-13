@@ -24,14 +24,24 @@ Pod::Spec.new do |s|
   s.author            = { 'MobileDev' => 'mobiledevs@moengage.com' }
   s.social_media_url  = 'https://twitter.com/moengage'
 
-  s.source       = {
-    :http => "https://github.com/moengage/kmm-apple-sdk/releases/download/#{s.version}/#{s.name}.xcframework.zip",
-    :sha256 => package[:hash]
-  }
+  s.source       = { :http => package.url, :sha256 => package[:hash] }
 
   s.ios.deployment_target = '12.0'
   s.tvos.deployment_target = '12.0'
   s.swift_versions = '5.0'
   s.requires_arc = true
   s.vendored_frameworks = "#{s.name}.xcframework"
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=*simulator*]' => '$(inherited) x86_64' }
+
+  headers_script = <<-SCRIPT
+if [[ "$EFFECTIVE_PLATFORM_NAME" == *"simulator"* && "$ARCHS" != *"arm64"* ]]; then
+  echo "Unsupported architecture ${ARCHS} for simulator"
+fi
+SCRIPT
+  s.script_phase = {
+    :name => 'Architecture Verification',
+    :script => headers_script,
+    :execution_position => :after_headers,
+    :always_out_of_date => '1'
+  }
 end
