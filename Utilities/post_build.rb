@@ -37,9 +37,10 @@ struct MoEngagePackageProduct {
 
 let products: [MoEngagePackageProduct] = [
     .init(
-        name: "MoEngageKMMConditionEvaluator",
+        name: "#{kmm_ce_package.name}",
         targets: [
-            .binaryTarget(name: "MoEngageKMMConditionEvaluator", url: "https://github.com/moengage/kmm-apple-sdk/releases/download/#{kmm_ce_package.version}/MoEngageKMMConditionEvaluator.xcframework.zip", checksum: "#{kmm_ce_package[:hash]}"),
+            .binaryTarget(name: "#{kmm_ce_package.name}", url: "#{kmm_ce_package.url}", checksum: "#{kmm_ce_package[:hash]}"),
+            .target(name: "MoEngageKMMConditionEvaluatorSPM")
         ]
     ),
 ]

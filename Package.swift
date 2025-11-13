@@ -21,6 +21,7 @@ let products: [MoEngagePackageProduct] = [
         name: "MoEngageKMMConditionEvaluator",
         targets: [
             .binaryTarget(name: "MoEngageKMMConditionEvaluator", url: "https://github.com/moengage/kmm-apple-sdk/releases/download/1.0.0/MoEngageKMMConditionEvaluator.xcframework.zip", checksum: "16fb97f6c5973c6daed338307e717427aad470ea9e913252b3de5f9a1e209485"),
+            .target(name: "MoEngageKMMConditionEvaluatorSPM")
         ]
     ),
 ]
