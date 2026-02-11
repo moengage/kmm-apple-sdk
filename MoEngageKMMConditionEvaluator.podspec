@@ -32,18 +32,4 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.vendored_frameworks = "#{s.name}.xcframework"
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=*simulator*]' => '$(inherited) x86_64' }
-
-  unsupported_arch_doc_url = 'https://developers.moengage.com/hc/en-us/articles/43255588673684-Configuring-Project-for-Architecture-Compatibility#h_01K9VWV2EDFWNSHQK02R7CP7WT'
-  headers_script = <<-SCRIPT
-if [[ "$EFFECTIVE_PLATFORM_NAME" == *"simulator"* && "$ARCHS" != *"arm64"* ]]; then
-  echo "Unsupported architecture ${ARCHS} for simulator, see: #{unsupported_arch_doc_url}"
-  exit 1
-fi
-SCRIPT
-  s.script_phase = {
-    :name => 'Architecture Verification',
-    :script => headers_script,
-    :execution_position => :after_headers,
-    :always_out_of_date => '1'
-  }
 end
